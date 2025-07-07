@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grad-CAM Demystified | Blogs & Insights | Sarah's Portfolio</title>
+  <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+  <link rel="stylesheet" href="../css/blogs/gradCAM(summary).css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans:wght@400;500;700&display=swap" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+</head>
+<body>
+  <div class="layout-container flex flex-col min-h-screen bg-white">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <a href="../index.html" class="logo-link" aria-label="Home">
+          <svg class="logo-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_6_319)">
+              <path
+                d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z"
+                fill="currentColor"
+              ></path>
+            </g>
+            <defs>
+              <clipPath id="clip0_6_319"><rect width="48" height="48" fill="white"></rect></clipPath>
+            </defs>
+          </svg>
+          <span class="site-title">Portfolio</span>
+        </a>
+      </div>
+      <nav class="header-nav" aria-label="Main navigation">
+        <a href="../projects.html">Projects</a>
+        <a href="../resume.html">Resume/About Me</a>
+        <a href="../achievements.html">Achievements</a>
+        <a href="../blogs.html" class="active">Blogs/Insights</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button class="mode-toggle" aria-label="Toggle light/dark mode">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+            <path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"></path>
+          </svg>
+        </button>
+        <div class="profile-pic" style='background-image: url("../assets/profile.jpg");' aria-label="Profile picture"></div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <nav class="breadcrumb">
+        <a href="../blogs.html">Insights</a>
+        <span>/</span>
+        <span class="current">Grad-CAM Demystified</span>
+      </nav>
+      <article class="blog-article">
+        <h1 class="blog-title">Grad-CAM Demystified: Visual Explanations from Deep Networks</h1>
+        <p class="blog-date">Published on July 6, 2025</p>
+
+        <section class="blog-section">
+          <h2>Paper Overview</h2>
+          <p>
+            <strong>Paper Title:</strong> Grad-CAM: Visual Explanations from Deep Networks via Gradient-based Localization (Selvaraju et al., ICCV 2017)
+          </p>
+          <p>
+            Deep neural networks, especially CNNs, excel at vision tasks like classification, detection, captioning, and VQA. However, they often act as black boxes, making it difficult to understand or trust their predictions. Grad-CAM (Gradient-weighted Class Activation Mapping) is a general-purpose tool to visually explain decisions made by CNN-based models including classifiers, captioning, and VQA models without changing the model architecture.
+          </p>
+        </section>
+
+        <section class="blog-section">
+          <h2>Core Idea and Intuition</h2>
+          <ul>
+            <li>CNNs build up high-level features as you go deeper: early layers detect edges/textures, deeper layers detect object parts and shapes.</li>
+            <li>Fully connected layers discard spatial information, but the last convolutional layers retain both spatial and semantic information making them ideal for visualization.</li>
+            <li><strong>Key innovation:</strong> Grad-CAM uses the gradient of the class score (e.g., "tiger cat") with respect to the feature maps from the last convolutional layer to assign importance scores to each channel. These are combined to create a heatmap showing where the network focused for its decision.</li>
+            <br>
+            <li>(Also scroll down to know some key concepts and FAQs so that you understand the below portions better.)</li>
+          </ul>
+        </section>
+
+        <section class="blog-section">
+          <h2>How Grad-CAM Works: Step-by-Step</h2>
+          <ol>
+            <li>
+              <strong>Gradient Computation:</strong> For a target class <em>c</em>, compute the gradient of the output score \( y^c \) with respect to feature maps \( A^k \) in the last conv layer. This shows how much each feature influences the class score.
+            </li>
+            <li>
+              <strong>Compute Importance Weights:</strong> Average these gradients spatially to get an importance score for each feature map:
+              <br>
+              \( \alpha_k^c = \frac{1}{Z} \sum_i \sum_j \frac{\partial y^c}{\partial A_{ij}^k} \)
+            </li>
+            <li>
+              <strong>Generate Heatmap:</strong> Multiply each feature map by its importance score, sum them, and apply ReLU:
+              <br>
+              \( L^{\text{Grad-CAM}}_c = \text{ReLU} \left( \sum_k \alpha_k^c A^k \right) \)
+            </li>
+          </ol>
+          <p>
+            <strong>Why ReLU?</strong> It highlights only the positive influences regions that increase the score for class <em>c</em>.
+          </p>
+        </section>
+
+        <section class="blog-section">
+          <h2>Generalization & Counterfactual Explanations</h2>
+          <ul>
+            <li>Grad-CAM is not limited to class scores in image classification; it can be applied to any differentiable output (e.g., words in captions, VQA answers, policy outputs in RL).</li>
+            <li>It is architecture-agnostic and works with CNN+RNN, encoder-decoder, and multimodal models.</li>
+            <li>Counterfactuals: By computing Grad-CAM for a different class, you can visualize what the model would need to see more of to choose that class useful for debugging and model introspection.</li>
+          </ul>
+        </section>
+
+        <section class="blog-section">
+          <h2>Guided Grad-CAM: High-Resolution Explanations</h2>
+          <ul>
+            <li>Combines Grad-CAM (coarse, class-specific) with Guided Backpropagation (high-resolution, not class-specific).</li>
+            <li>Result: Heatmaps that are both class-discriminative and high-resolution, ideal for visualizing fine details that trigger predictions.</li>
+          </ul>
+        </section>
+
+        <section class="blog-section">
+          <h2>What Makes Grad-CAM Special?</h2>
+          <ul>
+            <li>Works on any CNN-based architecture (e.g., ResNet, VGG).</li>
+            <li>No retraining or model changes required.</li>
+            <li>Supports image classification, captioning, VQA, and reinforcement learning tasks.</li>
+            <li>Combines well with pixel-level methods for even better visualizations.</li>
+          </ul>
+        </section>
+
+        <table>
+  <thead>
+    <tr>
+      <th>Aspect</th>
+      <th>CAM</th>
+      <th>Grad-CAM</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Architecture</td>
+      <td>Requires special CNNs</td>
+      <td>Works on any CNN</td>
+    </tr>
+    <tr>
+      <td>Retraining needed</td>
+      <td>Yes</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Tasks supported</td>
+      <td>Only classification</td>
+      <td>Classification, VQA, captioning, RL</td>
+    </tr>
+    <tr>
+      <td>Resolution</td>
+      <td>Coarse</td>
+      <td>Coarse (or high with Guided Grad-CAM)</td>
+    </tr>
+    <tr>
+      <td>ImageNet Localization</td>
+      <td>59.65% top-1 error</td>
+      <td>56.51% top-1 error</td>
+    </tr>
+    <tr>
+      <td>Human Discrimination</td>
+      <td>44.44% accuracy (Guided BP)</td>
+      <td>61.23% accuracy</td>
+    </tr>
+    <tr>
+      <td>VQA Faithfulness</td>
+      <td>0.42 correlation (Guided BP)</td>
+      <td>0.60 correlation with occlusion</td>
+    </tr>
+  </tbody>
+</table>
+
+
+        <section class="blog-section">
+          <h2>Related Work</h2>
+          <ul>
+            <li>Prior methods (Guided Backprop, Deconv) gave high-res visualizations but were not class-specific.</li>
+            <li>CAM was class-specific but needed a special model.</li>
+            <li>Grad-CAM combines class-specificity with general model support and can be combined with pixel-level techniques.</li>
+          </ul>
+        </section>
+        
+        <section class="blog-section">
+          <h2>How Grad-CAM Fits in the Network Pipeline</h2>
+          <ul>
+            <li><strong>Input and Forward Pass:</strong> The image is processed by a CNN to extract feature maps, which are then used by a task-specific network (e.g., classifier, captioning, VQA).</li>
+            <li><strong>Backward Pass and Grad-CAM:</strong> Select a target output, compute gradients with respect to feature maps, global-average-pool to get importance weights, combine and apply ReLU to get the heatmap.</li>
+            <li><strong>Guided Backpropagation:</strong> Shows fine-grained features but is not class-specific.</li>
+            <li><strong>Guided Grad-CAM:</strong> Multiply the Grad-CAM heatmap (class-discriminative) with the Guided Backprop result (high-res) for sharp, specific visual explanations.</li>
+          </ul>
+        </section>
+
+        <section class="blog-section">
+          <h2>Practical Benefits</h2>
+          <ul>
+            <li><strong>Debugging:</strong> See what the model is focusing on (e.g., is it using background textures?).</li>
+            <li><strong>Trust-building:</strong> Know when to trust or not trust a model's decision.</li>
+            <li><strong>Teaching:</strong> Use visual explanations to show others how the model works.</li>
+            <li><strong>Bias detection:</strong> Reveal if a model is overfitting to irrelevant cues.</li>
+          </ul>
+        </section>
+
+        <section class="blog-section">
+          <h2>Applying Grad-CAM to ACT (Transformer-based Models)</h2>
+          <ul>
+            <li>Grad-CAM is designed for CNNs but can be adapted to models like ACT, which use a visual encoder (CNN) + transformer.</li>
+            <li>For the visual encoder, apply Grad-CAM directly to the last convolutional layer.</li>
+            <li>For the transformer, compute gradients of the output with respect to intermediate token embeddings or attention maps, reshape tokens to a 2D grid, and use the Grad-CAM idea to generate a heatmap.</li>
+            <li>Challenges: Transformers lack clear spatial structure, so mapping tokens back to image regions requires care.</li>
+          </ul>
+        </section>
+        
+        <section class="blog-section">
+          <h2>Beyond Visuals: Textual Explanations</h2>
+          <p>
+            Grad-CAM can also help generate textual explanations by linking important neurons (identified via Grad-CAM) with predefined "neuron names" (e.g., "This neuron activates for dog faces"), providing human-understandable rationales for model decisions.
+          </p>
+        </section>
+
+        <section class="blog-section">
+          <h2>Final Takeaways</h2>
+          <ul>
+            <li>Grad-CAM is a powerful, flexible tool for understanding CNN-based decisions.</li>
+            <li>It bridges the interpretability gap in deep vision systems from classification to VQA.</li>
+            <li>It can be extended to transformer-based models via their CNN visual encoders.</li>
+            <li>Helps with debugging, trust, and model refinement in real-world settings.</li>
+          </ul>
+        </section>
+
+        <section class="blog-section">
+          <h2>**Key Concepts to Know</h2>
+          <ul>
+            <li><strong>Image Classification:</strong> Identifying the main object or scene in an image.</li>
+            <li><strong>Object Detection:</strong> Identifying where objects are in an image and what they are.</li>
+            <li><strong>Semantic Segmentation:</strong> Classifying every pixel in an image.</li>
+            <li><strong>Image Captioning:</strong> Generating a natural language sentence that describes the image.</li>
+            <li><strong>Visual Question Answering (VQA):</strong> Answering questions about an image using both visual and language understanding.</li>
+          </ul>
+        </section>
+
+        <section class="blog-section">
+          <h2>**FAQ: Feature Maps & Output Scores</h2>
+          <p>
+            <strong>What is a feature map?</strong><br>
+            A feature map is a filtered version of the input image that highlights specific patterns (edges, textures, shapes). Each convolutional layer outputs many such maps, each looking for a different pattern.
+          </p>
+          <p>
+            <strong>What is the output score for a target class (y<sup>c</sup>)?</strong><br>
+            For a CNN classifier, the output is a set of raw scores (before softmax) for each class. The score for "cat" (y<sup>c</sup>) tells how confident the model is that the image is a cat. Grad-CAM uses the gradient of this score with respect to feature maps to show which parts of the image most influenced the prediction.
+          </p>
+        </section>
+
+        <div class="back-link">
+          <a href="../blogs.html">&larr; Back to Insights</a>
+        </div>
+      </article>
+    </main>
+  </div>
+</body>
+</html>

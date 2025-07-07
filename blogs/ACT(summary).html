@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pair Trading and Options: Quantitative Finance Insights | Blogs & Insights | Sarah's Portfolio</title>
+  <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+  <link rel="stylesheet" href="../css/blogs/gradCAM(summary).css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans:wght@400;500;700&display=swap" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+</head>
+<body>
+  <div class="layout-container flex flex-col min-h-screen bg-white">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <a href="../index.html" class="logo-link" aria-label="Home">
+          <svg class="logo-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_6_319)">
+              <path
+                d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z"
+                fill="currentColor"
+              ></path>
+            </g>
+            <defs>
+              <clipPath id="clip0_6_319"><rect width="48" height="48" fill="white"></rect></clipPath>
+            </defs>
+          </svg>
+          <span class="site-title">Portfolio</span>
+        </a>
+      </div>
+      <nav class="header-nav" aria-label="Main navigation">
+        <a href="../projects.html">Projects</a>
+        <a href="../resume.html">Resume/About Me</a>
+        <a href="../achievements.html">Achievements</a>
+        <a href="../blogs.html" class="active">Blogs/Insights</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button class="mode-toggle" aria-label="Toggle light/dark mode">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+            <path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"></path>
+          </svg>
+        </button>
+        <div class="profile-pic" style='background-image: url("../assets/profile.jpg");' aria-label="Profile picture"></div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <nav class="breadcrumb">
+        <a href="../blogs.html">Insights</a>
+        <span>/</span>
+        <span class="current">Pair Trading and Options: Quantitative Finance Insights</span>
+      </nav>
+      <article class="blog-article">
+        <h1 class="blog-title">Pair Trading and Options: Practical Insights in Quantitative Finance</h1>
+        <p class="blog-date">Published on April 7, 2025</p>
+
+        <section class="blog-section">
+          <h2>Understanding Options and Futures</h2>
+          <ul>
+            <li>
+              <strong>Options:</strong> Derivative contracts that give the buyer the right, but not the obligation, to buy or sell an asset at a set price within a specific period. The buyer pays a premium for this right.
+              <br><em>Buying a stock is related to a call option; selling a stock is related to a put option.</em>
+            </li>
+            <li>
+              <strong>Futures:</strong> Contracts that obligate both the buyer and seller to transact an asset at a predetermined price on a future date. Both parties are bound to the contract.
+            </li>
+          </ul>
+          <h4>Key Differences</h4>
+          <ul>
+            <li><strong>Obligation vs. Right:</strong> Options give the buyer a right; futures create an obligation for both parties.</li>
+            <li><strong>Settlement:</strong> Options are usually cash-settled; futures often involve physical settlement.</li>
+            <li><strong>Execution:</strong> Options can be exercised anytime before expiry; futures only on the specified date.</li>
+            <li><strong>Profit/Loss:</strong> Options limit loss to the premium; futures expose both parties to unlimited profit/loss.</li>
+          </ul>
+        </section>
+
+        <section class="blog-section">
+          <h2>Options as Hedging Tools</h2>
+          <ul>
+            <li>
+              <strong>Covered Call (Short-Call Hedge):</strong> Selling call options on owned stock to limit downside risk and earn premiums.
+              <br><em>If the stock price doesn’t rise significantly, the trader keeps the premium.</em>
+            </li>
+            <li>
+              <strong>Long Put Hedge:</strong> Buying put options to protect against price declines. If the stock price falls below the strike price, the option’s premium increases and offsets equity losses.
+            </li>
+          </ul>
+        </section>
+
+        <section class="blog-section">
+          <h2>Decoding Option Greeks</h2>
+          <ul>
+            <li>
+              <strong>Delta:</strong> Measures how much an option’s price changes with a 1-point move in the underlying asset.
+              <br><em>Delta for calls: 0 to 1; puts: 0 to -1. Indicates moneyness and hedge ratios.</em>
+            </li>
+            <li>
+              <strong>Gamma:</strong> Rate of change of Delta. High for at-the-money options, low for in/out-of-the-money.
+              <br><em>Delta is the first derivative of premium; Gamma is the second.</em>
+            </li>
+            <li>
+              <strong>Theta:</strong> Time decay; how much value an option loses as expiration approaches.
+              <br><em>Hurts buyers, benefits sellers. Premium = Intrinsic Value + Time Value (Theta affects time value).</em>
+            </li>
+            <li>
+              <strong>Vega:</strong> Sensitivity to volatility; higher volatility increases option value.
+              <br><em>Vega = Rate of change of premium / Change in Volatility.</em>
+            </li>
+            <li>
+              <strong>Rho:</strong> Sensitivity to interest rates. Positive for calls, negative for puts.
+              <br><em>Rho is less significant for most practical trading decisions.</em>
+            </li>
+          </ul>
+        </section>
+
+        <section class="blog-section">
+          <h2>Pair Trading: Mean Reversion and Statistical Arbitrage</h2>
+          <h3>Stock Selection and Rationale</h3>
+          <ul>
+            <li>
+              <strong>Chosen Pair:</strong> Apple (AAPL) and Microsoft (MSFT)
+              <ul>
+                <li>Combined market cap of $5.51 trillion (April 2025), representing 12% of the S&P 500.</li>
+                <li>Apple dominates in premium consumer hardware and ecosystem integration; Microsoft leads in enterprise cloud and AI.</li>
+                <li>Both are financially robust but have different innovation strategies (Microsoft invests more in R&D; Apple focuses on vertical integration).</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Sectoral Trends (2019–2025):</strong>
+              <ul>
+                <li>Cloud computing and AI adoption (Microsoft’s Azure, OpenAI partnerships).</li>
+                <li>Hardware innovation and ecosystem lock-in (Apple’s “Apple Intelligence”).</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Correlation Analysis:</strong> 3-month rolling correlation of 0.53 (2019–2025), indicating moderate positive co-movement.</li>
+            <li>
+              <strong>Cointegration:</strong> Augmented Dickey-Fuller (ADF) statistic of -3.42 (p &lt; 0.05), confirming a mean-reverting spread—ideal for pair trading.
+            </li>
+          </ul>
+        </section>
+
+        <section class="blog-section">
+          <h2>Data Collection and Preprocessing</h2>
+          <ul>
+            <li>
+              <strong>Historical Data:</strong> Daily adjusted close prices for AAPL and MSFT (Jan 1, 2019 – Dec 31, 2023) from Yahoo Finance.
+            </li>
+            <li>
+              <strong>Handling Missing Values:</strong> Linear interpolation fills gaps due to market holidays, ensuring a continuous timeline for analysis.
+            </li>
+            <li>
+              <strong>Normalization:</strong> Min-max scaling brings both stocks to a 0–1 range, allowing fair comparison and visualization.
+              <br><em>Normalized price = (Actual Price – Minimum Price) / (Maximum Price – Minimum Price)</em>
+            </li>
+            <li>
+              <strong>Visualization:</strong> Line charts of normalized prices and histograms of daily returns reveal trends and volatility.
+            </li>
+          </ul>
+        </section>
+
+        <section class="blog-section">
+          <h2>Backtesting the Pair Trading Strategy</h2>
+          <ol>
+            <li>
+              <strong>Strategy Logic:</strong> Bet that two stocks that usually move together will return to their "normal" relationship if they temporarily drift apart.
+              <ul>
+                <li>If Apple rises sharply while Microsoft stays flat, sell Apple and buy Microsoft (and vice versa).</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Spread Calculation:</strong> Adjust for price differences using a hedge ratio (e.g., if MSFT moves ₹2 for every ₹1 AAPL moves, hedge ratio is 2).
+            </li>
+            <li>
+              <strong>Trading Signals:</strong> Use Z-Score of the spread:
+              <ul>
+                <li>Z &gt; +1.5: Sell Apple, Buy Microsoft.</li>
+                <li>Z &lt; -1.5: Buy Apple, Sell Microsoft.</li>
+                <li>Exit when Z approaches zero.</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Performance Metrics:</strong>
+              <ul>
+                <li>Returns: Example—20.83% over five years (₹12,000 to ₹14,500).</li>
+                <li>Sharpe Ratio: Measures risk-adjusted return (e.g., 0.5 means ₹0.50 earned per ₹1 of risk).</li>
+                <li>Max Drawdown: Largest peak-to-trough loss (e.g., -50% if ₹10,000 drops to ₹5,000).</li>
+              </ul>
+            </li>
+          </ol>
+        </section>
+
+        <section class="blog-section">
+          <h2>Performance Analysis and Improvements</h2>
+          <ul>
+            <li>
+              <strong>Robustness:</strong> The strategy exploits mean-reverting behavior, profiting when the price relationship normalizes.
+            </li>
+            <li>
+              <strong>Improvements:</strong>
+              <ul>
+                <li>Use machine learning models for missing value imputation (data cleaning).</li>
+                <li>Apply advanced normalization techniques (e.g., normal distribution) for better graphs and interpretation.</li>
+                <li>Adapt Z-score bands to volatility using machine learning for dynamic signal generation.</li>
+              </ul>
+            </li>
+          </ul>
+          <p>
+            <em>This structured approach, combining statistical rigor and practical trading logic, forms the backbone of robust quantitative finance strategies.</em>
+          </p>
+        </section>
+
+        <div class="back-link">
+          <a href="../blogs.html">&larr; Back to Insights</a>
+        </div>
+      </article>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,237 @@
+/* css/blogs/gradcam.css */
+
+body {
+  font-family: 'Inter', 'Noto Sans', sans-serif;
+  background: #f8fafc;
+  margin: 0;
+  padding: 0;
+  color: #101419;
+}
+
+/* Header styles */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #f0f2f4;
+  padding: 18px 40px;
+  background: #fff;
+  position: relative;
+  z-index: 10;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo-icon {
+  width: 32px;
+  height: 32px;
+  color: #2563eb;
+}
+
+.site-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #101419;
+  margin-left: 8px;
+  letter-spacing: -0.015em;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.header-nav a {
+  color: #101419;
+  font-size: 0.98rem;
+  font-weight: 500;
+  padding: 5px 10px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: color 0.2s, background 0.2s;
+}
+
+.header-nav a:hover,
+.header-nav a:focus {
+  color: #2563eb;
+  background: #e0e7ef;
+  outline: none;
+}
+
+.header-nav a.active {
+  color: #2563eb;
+  border-bottom: 2px solid #2563eb;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.mode-toggle {
+  background: #e9edf1;
+  border: none;
+  border-radius: 12px;
+  height: 36px;
+  width: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.mode-toggle:hover {
+  background: #d2e2f3;
+}
+
+.profile-pic {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 2px solid #e9edf1;
+}
+
+/* Main content layout */
+.main-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 16px 0 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  background: #f8fafc;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.98rem;
+  color: #49739c;
+  margin-bottom: 8px;
+  padding-left: 8px;
+}
+
+.breadcrumb a {
+  color: #197fe5;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb .current {
+  color: #101419;
+  font-weight: 600;
+}
+
+/* Blog article */
+.blog-article {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 3px 12px rgba(40, 60, 90, 0.07);
+  padding: 36px 32px 32px 32px;
+  margin-bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.blog-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #101419;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.015em;
+  text-align: left;
+}
+
+.blog-date {
+  color: #49739c;
+  font-size: 0.98rem;
+  margin-bottom: 12px;
+}
+
+.blog-section {
+  margin-bottom: 18px;
+}
+
+.blog-section h2 {
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: #197fe5;
+  margin: 18px 0 8px 0;
+  letter-spacing: -0.015em;
+}
+
+.blog-section p {
+  color: #101419;
+  font-size: 1.01rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.back-link {
+  margin-top: 18px;
+  padding-top: 12px;
+  border-top: 1px solid #e9edf1;
+}
+
+.back-link a {
+  color: #197fe5;
+  font-size: 0.98rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: text-decoration 0.2s;
+}
+
+.back-link a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive design */
+@media (max-width: 900px) {
+  .header {
+    padding: 18px 10px;
+  }
+  .main-content {
+    padding: 18px 2px 0 2px;
+  }
+  .blog-article {
+    padding: 18px 8px 18px 8px;
+  }
+}
+
+@media (max-width: 600px) {
+  .header-nav {
+    gap: 0.7rem;
+  }
+  .main-content {
+    padding: 8px 0 0 0;
+  }
+  .blog-title {
+    font-size: 1.3rem;
+  }
+  .site-title {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,248 @@
+body {
+  font-family: 'Inter', 'Noto Sans', sans-serif;
+  background: #f8fafc;
+  margin: 0;
+  padding: 0;
+  color: #101419;
+}
+
+/* Header styles */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e9edf1;
+  padding: 18px 40px;
+  background: #fff;
+  position: relative;
+  z-index: 10;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo-icon {
+  width: 32px;
+  height: 32px;
+  color: #2563eb;
+}
+
+.site-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #101419;
+  margin-left: 8px;
+  letter-spacing: -0.015em;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.header-nav a {
+  color: #101419;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: color 0.2s, background 0.2s;
+}
+
+.header-nav a:hover,
+.header-nav a:focus {
+  color: #2563eb;
+  background: #e0e7ef;
+  outline: none;
+}
+
+.header-nav a.active {
+  color: #2563eb;
+  border-bottom: 2px solid #2563eb;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.mode-toggle {
+  background: #e9edf1;
+  border: none;
+  border-radius: 12px;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.mode-toggle:hover {
+  background: #d2e2f3;
+}
+
+.profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 2px solid #e9edf1;
+}
+
+/* Main content */
+.main-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 16px 0 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.roadmap-header h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #101419;
+  margin: 24px 0 4px 0;
+  letter-spacing: -0.015em;
+  text-align: left;
+}
+
+.roadmap-subtitle {
+  color: #637588;
+  font-size: 1rem;
+  margin-bottom: 12px;
+  margin-top: 0;
+}
+
+.roadmap-timeline {
+  margin: 0 auto;
+  padding: 0 0 40px 0;
+  max-width: 700px;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+}
+
+.timeline-item {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  position: relative;
+  min-height: 80px;
+}
+
+.timeline-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2563eb;
+  background: #e9edf1;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(40, 60, 90, 0.04);
+}
+
+.timeline-content {
+  margin-left: 18px;
+  padding: 12px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.timeline-year {
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: #101419;
+}
+
+.timeline-desc {
+  color: #638888;
+  font-size: 0.98rem;
+  margin-top: 2px;
+}
+
+@media (max-width: 900px) {
+  .header {
+    padding: 18px 10px;
+  }
+  .main-content {
+    padding: 18px 2px 0 2px;
+  }
+  .roadmap-timeline {
+    padding: 0 0 24px 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .header-nav {
+    gap: 1rem;
+  }
+  .main-content {
+    padding: 8px 0 0 0;
+  }
+  .roadmap-header h1 {
+    font-size: 1.3rem;
+  }
+  .site-title {
+    font-size: 1rem;
+  }
+}
+
+.read-more {
+  margin-top: 10px;
+}
+
+.read-more a {
+  display: inline-block;
+  color: #2563eb;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  background: #e9edf1;
+  border-radius: 8px;
+  padding: 6px 18px;
+  transition: 
+    background 0.18s cubic-bezier(.4,2,.6,1),
+    color 0.18s cubic-bezier(.4,2,.6,1),
+    box-shadow 0.18s cubic-bezier(.4,2,.6,1),
+    transform 0.18s cubic-bezier(.4,2,.6,1);
+  box-shadow: 0 1px 4px rgba(40,60,90,0.06);
+  cursor: pointer;
+}
+
+.read-more a:hover,
+.read-more a:focus {
+  background: #2563eb;
+  color: #fff;
+  text-decoration: underline;
+  box-shadow: 0 4px 16px rgba(40,60,90,0.10);
+  transform: translateY(-2px) scale(1.04);
+  outline: none;
+}
+

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blogs, Insights & Videos | Aryan's Portfolio</title>
+  <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans:wght@400;500;700&display=swap" />
+  <link rel="stylesheet" href="css/blogs.css" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+</head>
+<body>
+  <div class="layout-container flex flex-col min-h-screen bg-white">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <a href="index.html" class="logo-link" aria-label="Home">
+          <svg class="logo-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_6_319)">
+              <path
+                d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z"
+                fill="currentColor"
+              ></path>
+            </g>
+            <defs>
+              <clipPath id="clip0_6_319"><rect width="48" height="48" fill="white"></rect></clipPath>
+            </defs>
+          </svg>
+          <span class="site-title">Portfolio</span>
+        </a>
+      </div>
+      <nav class="header-nav" aria-label="Main navigation">
+        <a href="projects.html">Projects</a>
+        <a href="resume.html">Resume/About Me</a>
+        <a href="roadmap.html">Roadmap</a>
+        <a href="blogs.html" class="active">Blogs/Insights</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button class="mode-toggle" aria-label="Toggle light/dark mode">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+            <path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"></path>
+          </svg>
+        </button>
+        <div class="profile-pic" style='background-image: url("assets/profile.jpg");' aria-label="Profile picture"></div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <section class="blogs-header">
+        <h1>Blogs, Insights & Videos</h1>
+        <p class="blogs-subtitle">A collection of thoughts, explorations, discoveries, and demos in design, technology, and robotics.</p>
+      </section>
+
+      <!-- Slider Tabs -->
+      <div class="slider-tabs">
+        <button class="slider-tab active" id="tab-insights" onclick="showSection('insights')">Insights</button>
+        <button class="slider-tab" id="tab-blogs" onclick="showSection('blogs')">Blogs</button>
+        <button class="slider-tab" id="tab-videos" onclick="showSection('videos')">Videos</button>
+      </div>
+      
+       <!-- Insights Section -->
+      <section id="insights-section" class="slider-section">
+        <div class="blog-card mb-4">
+          <div class="blog-content">
+            <h3 class="blog-title font-semibold">Grad-CAM Demystified: Visualizing Deep Learning Decisions</h3>
+            <p class="blog-desc">A deep dive into Grad-CAM — how it helps us understand what parts of an image influence a neural network’s decisions, and why that matters for trust, debugging, and interpretability.</p>
+            <a href="blogs/gradCAM(summary).html" class="read-more text-blue-600">Read more →</a>
+          </div>
+          <div class="blog-image w-full h-48 bg-cover bg-center" style='background-image: url("assets/blogs/gradCAM.jpg");'></div>
+        </div>
+        <div class="blog-card">
+          <div class="blog-content">
+            <h3 class="blog-title font-semibold">Action Chunking Transformers: Smarter Long-Horizon Robot Control</h3>
+            <p class="blog-desc">A simple explanation of the Action Chunking Transformer model — how it lets robots group actions into meaningful chunks for efficient, long-horizon control. I explore the core architecture, why chunking helps in visuomotor tasks, and where this approach fits in building general-purpose robotic agents.</p>
+            <a href="blogs/ACT(summary).html" class="read-more text-blue-600">Read more →</a>
+          </div>
+          <div class="blog-image w-full h-48 bg-cover bg-center" style='background-image: url("assets/blogs/ACT.jpg");'></div>
+        </div>
+        <div class="blog-card">
+          <div class="blog-content">
+            <h3 class="blog-title font-semibold">Quantitative Finance for Beginners: Blending Math with Markets</h3>
+            <p class="blog-desc">A beginner-friendly dive into <b>Quantitative Finance</b> — how math-heavy concepts like stochastic calculus, correlation, and mean reversion power strategies like options trading and pairs trading. I break down my learning journey, key concepts, and how I built my first trading algorithms.</p>
+            <a href="blogs/QF(summary).html" class="read-more text-blue-600">Read more →</a>
+          </div>
+          <div class="blog-image w-full h-48 bg-cover bg-center" style='background-image: url("assets/blogs/QF.jpg");'></div>
+        </div>
+      </section>
+
+      <!-- Blogs Section -->
+      <section id="blogs-section" class="slider-section" style="display:none;">
+        <div class="blog-list">
+          <div class="blog-card mb-4">
+            <div class="blog-content">
+              <h3 class="blog-title">Yet to write</h3>
+              <p class="blog-desc">Blank</p>
+              <a href="blog-ai-software.html" class="read-more text-blue-600">Read more →</a>
+            </div>
+            <div class="blog-image w-full h-48 bg-cover bg-center" style='background-image: url("assets/blogs/ai-software.jpg");'></div>
+          </div>
+          <div class="blog-card">
+            <div class="blog-content">
+              <h3 class="blog-title">Yet to write</h3>
+              <p class="blog-desc">Blank</p>
+              <a href="blog-scalable-web.html" class="read-more text-blue-600">Read more →</a>
+            </div>
+            <div class="blog-image w-full h-48 bg-cover bg-center" style='background-image: url("assets/blogs/scalable-web.jpg");'></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Videos Section -->
+      <section id="videos-section" class="slider-section" style="display:none;">
+        <div class="blog-list">
+          <div class="blog-card mb-4">
+            <div class="blog-content">
+              <h3 class="blog-title">Yet to make</h3>
+              <p class="blog-desc">Blank</p>
+              <a href="videos/robotics-demo.html" class="read-more text-blue-600">Watch video →</a>
+            </div>
+            <div class="blog-image w-full h-48 bg-cover bg-center" style='background-image: url("assets/videos/robotics-demo-thumb.jpg");'></div>
+          </div>
+          <div class="blog-card">
+            <div class="blog-content">
+              <h3 class="blog-title">Yet to make</h3>
+              <p class="blog-desc">Blank</p>
+              <a href="videos/neural-networks.html" class="read-more text-blue-600">Watch video →</a>
+            </div>
+            <div class="blog-image w-full h-48 bg-cover bg-center" style='background-image: url("assets/videos/neural-networks-thumb.jpg");'></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    function showSection(section) {
+      document.getElementById('blogs-section').style.display = section === 'blogs' ? 'block' : 'none';
+      document.getElementById('insights-section').style.display = section === 'insights' ? 'block' : 'none';
+      document.getElementById('videos-section').style.display = section === 'videos' ? 'block' : 'none';
+      document.getElementById('tab-blogs').classList.toggle('active', section === 'blogs');
+      document.getElementById('tab-insights').classList.toggle('active', section === 'insights');
+      document.getElementById('tab-videos').classList.toggle('active', section === 'videos');
+    }
+  </script>
+</body>
+</html>
